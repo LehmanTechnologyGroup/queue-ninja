@@ -1,9 +1,18 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+router.all('/', pageTitleConcat);
+
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+  console.log("rendering");
+  res.render('index');
 });
+
+function pageTitleConcat(req, res, next) {
+  
+  res.locals.title = res.locals.title + ' - Welcome to Queue Ninja';
+  
+  next();
+}
 
 module.exports = router;

@@ -1,0 +1,41 @@
+<!-- Header -->
+<header>
+    <div class="sticky-nav">
+    	<a id="mobile-nav" class="menu-nav" href="#menu-nav"></a>
+        
+        <div id="logo">
+        	<a id="goUp" href="/" title="Queue Ninja | One Place to Track All the Things">Brushed Template</a>
+        </div>
+        
+        <nav id="menu">
+        	<ul id="menu-nav">
+            	<li class="current"><a href="#home-slider">Home</a></li>
+                <li><a href="#about">About</a></li>
+                {{#if isAuthenticated }}
+	            <li>Hi {{user.name}}</li>
+	            {{else}}
+	            <li><a href="#" class="sign-up" data-toggle="modal" id="sign_up_link" >SIGN UP</a></li>
+	            <li><a href="#" class="sign-in" data-toggle="modal" id="sign_in_link" >SIGN IN</a></li>
+	            {{/if}}
+            </ul>
+        </nav>
+        
+    </div>
+</header>
+<!-- End Header -->
+
+<div id="sign_up_modal" style="display: none; left: 50%; margin-left: -223px; z-index: 1002; position: fixed; top: 50%; margin-top: -159px;">
+    <h3 id="see_id" class="sprited">Can I see some ID?</h3>
+    <span>Please sign in using the form below</span>
+    <div id="sign_up_form">
+        <div class="span4 pull-center">
+            <a href="/auth/facebook"><button class="btn btn-facebook"><i class="fa fa-facebook"></i> | Connect with Facebook</button></a><br />
+            <a href="/auth/twitter"><button class="btn btn-twitter"><i class="fa fa-twitter"></i> | Connect with Twitter</button></a><br />
+            <a href="/auth/github"><button class="btn btn-github"><i class="fa fa-github"></i> | Connect with Github</button></a><br />
+            <a href="/auth/Google"><button class="btn btn-google-plus"><i class="fa fa-google-plus"></i> | Connect with Google Plus</button></a><br />
+        </div>
+    </div>
+    <h3 id="left_out" class="sprited">Feeling left out?</h3>
+    <span>Don't be sad, just <a href="#">click here</a> to sign up!</span>
+    <a id="close_x" class="close sprited" href="#">close</a>
+</div>

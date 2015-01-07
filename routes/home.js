@@ -25,6 +25,7 @@ function ensureAuthenticated(req, res, next) {
 
 function pageTitleConcat(req, res, next) {
   res.locals.title = res.locals.title + ' - My Queues';
+  next();
 }
 
 module.exports = router;

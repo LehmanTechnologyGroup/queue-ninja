@@ -628,6 +628,8 @@ nav#menu #menu-nav li a:hover {
 ================================================== */
 
 .page {
+	background-position: fixed;
+	background-image: url(/img/supersized/tree_path.jpg);
 	background: #2F3238;
 	padding: 100px 0;
 	position: relative;

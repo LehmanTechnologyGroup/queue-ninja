@@ -52,7 +52,7 @@ passport.deserializeUser(function(id, done) {
     })
 });
 
-app.all('*', loadUserData);
+app.all('*', loadUserData, pageTitle);
 
 // routes
 var index       = require('./routes/index.js');

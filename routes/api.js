@@ -1,49 +1,61 @@
 var router = require('express').Router();
 
-//List Methods
-router.get('/api/:userId/lists', function(req, res) {
+//Models
+var UserQueue   = require('../models/userQueue.js')
+var User 		= require('../models/user.js');
+
+// List Methods
+router.all('/:userId', verifyPermissions)
+
+router.get('/:userId/lists', function(req, res) {
+  
+ 
+ res.json(responseObject);
+});
+
+router.get('/:userId/:listId', function(req, res) {
   res.json(responseObject);
 });
 
-router.get('/api/:userId/:listId', function(req, res) {
+router.delete('/:userId/:listId', function(req, res) {
   res.json(responseObject);
 });
 
-router.delete('/api/:userId/:listId', function(req, res) {
+router.put('/:userId/', function(req, res) {
   res.json(responseObject);
 });
 
-router.put('/api/:userId/', function(req, res) {
+router.copy('/:userId/:listId', function(req, res) {
   res.json(responseObject);
 });
 
-router.copy('/api/:userId/:listId', function(req, res) {
+router.move('/:userId/:listId', function(req, res) {
   res.json(responseObject);
 });
 
-router.move('/api/:userId/:listId', function(req, res) {
+// List Item Methods
+router.get('/:userId/:listId/:itemId', function(req, res) {
   res.json(responseObject);
 });
 
-//List Item Methods
-router.get('/api/:userId/:listId/:itemId', function(req, res) {
+router.delete('/:userId/:listId/:itemId', function(req, res) {
   res.json(responseObject);
 });
 
-router.delete('/api/:userId/:listId/:itemId', function(req, res) {
+router.put('/:userId/:listId/:itemId', function(req, res) {
   res.json(responseObject);
 });
 
-router.put('/api/:userId/:listId/:itemId', function(req, res) {
+router.copy('/:userId/:listId/:itemId', function(req, res) {
   res.json(responseObject);
 });
 
-router.copy('/api/:userId/:listId/:itemId', function(req, res) {
+router.move('/:userId/:listId/:itemId', function(req, res) {
   res.json(responseObject);
 });
 
-router.move('/api/:userId/:listId/:itemId', function(req, res) {
-  res.json(responseObject);
-});
+function verifyPermissions(){
+ 
+}
 
 module.exports = router;

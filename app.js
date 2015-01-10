@@ -14,18 +14,17 @@ var bodyParser          = require('body-parser');
 var methodOverride      = require('method-override');
 var session             = require('express-session');
 var expressHandlebars   = require('express-handlebars');
+var MongoStore 			= require('connect-mongo')(session);
 
-// connect to the database
 mongoose.connect('mongodb://queueNinja:queueNinja@ds063150.mongolab.com:63150/queue-ninja');
 
 var app = express();
-var hbs = expressHandlebars.create(
-    { 
-      layoutsDir : 'views/layouts',
-      partialsDir : 'views/partials',
-      defaultLayout : 'main',
-      extname : '.hbs'
-    });
+var hbs = expressHandlebars.create({ 
+  layoutsDir : 'views/layouts',
+  partialsDir : 'views/partials',
+  defaultLayout : 'main',
+  extname : '.hbs'
+});
 
 app.use(morgan('dev'));
 app.set('views', __dirname + '/views');
@@ -33,10 +32,15 @@ app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('X-HTTP-Method-Override'))
-app.use(session({ secret: 'key card, I dont need no fuckin keycard' }));
+app.use(cookieParser());
+app.use(session({
+    secret: 'key card, I dont need no fuckin keycard',
+    maxAge: new Date(Date.now() + 3600000),
+    store: new MongoStore({mongooseConnection: mongoose.connection})
+  }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 

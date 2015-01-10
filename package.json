@@ -42,6 +42,7 @@
     "mongodb": "*",
     "method-override": "*",
     "express-session": "*",
-    "express-handlebars": "*"
+    "express-handlebars": "*",
+    "connect-mongo": "*"
   }
 }

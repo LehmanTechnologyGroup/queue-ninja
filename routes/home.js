@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 function ensureAuthenticated(req, res, next) {
   console.log("ensuring authenticated");
   if (req.isAuthenticated()) { return next(); }
-  res.redirect('/')
+  res.redirect('');
 }
 
 function pageTitleConcat(req, res, next) {

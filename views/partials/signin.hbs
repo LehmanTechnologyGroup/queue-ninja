@@ -1,0 +1,27 @@
+<div id="signin-form" class="white-popup-block mfp-hide">
+
+    <h1><span class="fa fa-sign-in"></span> Sign In</h1>
+
+    <!-- show any messages that come back with authentication -->
+    {{#if hasMessage }}
+        <div class="alert alert-danger"><%= message %></div>
+    {{/if}}
+
+    <!-- LOGIN FORM -->
+    <form action="/auth/signin" method="post">
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" name="email">
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+
+        <button type="submit" class="btn btn-warning btn-lg">Sign In</button>
+    </form>
+
+    <hr>
+
+    <p>Need an account? <a href="/#signup">Signup</a></p>
+</div>

@@ -1,41 +1,43 @@
-<!-- Header -->
-<header>
-    <div class="sticky-nav">
-    	<a id="mobile-nav" class="menu-nav" href="#menu-nav"></a>
-        
-        <div id="logo">
-        	<a id="goUp" href="/" title="Queue Ninja | One Place to Track All the Things">Brushed Template</a>
-        </div>
-        
-        <nav id="menu">
-        	<ul id="menu-nav">
-            	<li class="current"><a href="#home-slider">Home</a></li>
-                <li><a href="#about">About</a></li>
-                {{#if isAuthenticated }}
-	            <li>Hi {{user.name}}</li>
-	            {{else}}
-	            <li><a href="#" class="sign-up" data-toggle="modal" id="sign_up_link" >SIGN UP</a></li>
-	            <li><a href="#" class="sign-in" data-toggle="modal" id="sign_in_link" >SIGN IN</a></li>
-	            {{/if}}
-            </ul>
-        </nav>
-        
-    </div>
-</header>
-<!-- End Header -->
+<!-- Begin Loader -->
+<div class="loader"></div>
+<!-- End Loader -->
 
-<div id="sign_in_modal" style="display: none; left: 50%; margin-left: -223px; z-index: 1002; position: fixed; top: 50%; margin-top: -159px;">
-    <h3 id="see_id" class="sprited">Can I see some ID?</h3>
-    <span>Please sign in using the form below</span>
-    <div id="sign_up_form">
-        <div class="span4 pull-center">
-            <a href="/auth/facebook"><button class="btn btn-facebook"><i class="fa fa-facebook"></i> | Connect with Facebook</button></a>
-            <a href="/auth/twitter"><button class="btn btn-twitter"><i class="fa fa-twitter"></i> | Connect with Twitter</button></a>
-            <a href="/auth/github"><button class="btn btn-github"><i class="fa fa-github"></i> | Connect with Github</button></a>
-            <a href="/auth/Google"><button class="btn btn-google-plus"><i class="fa fa-google-plus"></i> | Connect with Google Plus</button></a>
-        </div>
-    </div>
-    <h3 id="left_out" class="sprited">Feeling left out?</h3>
-    <span>Don't be sad, just <a href="#">click here</a> to sign up!</span>
-    <a id="close_x" class="close sprited" href="#">close</a>
-</div>
+<header>
+
+    <a href="index.html" class="logo-container">
+        <p>The Master List</p>
+    </a>
+
+    <nav>
+        <ul>
+            <li><a href="/">HOME</a></li>
+            <li>
+                <a href="#">PAGES</a>
+                <ul>
+                    <li><a href="/about">ABOUT ME</a></li>
+                    <li><a href="/contact">CONTACT US 1</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="/blog">BLOG</a>
+            </li>
+        {{#if isAuthenticated }}
+            <li><a href="#">{{user.name}}
+            	<ul>
+            		<li><a href="#">PREFERENCES</a></li>
+            		<li><a href="#">LOG OUT</a></li>
+            	</ul>
+            </li>
+	    {{else}}
+	    	<li><a href="#signup-form" class="signup-form" id="sign_up_link" >SIGN UP</a></li>
+	        <li><a href="#signin-form" class="signin-form" id="sign_in_link" >SIGN IN</a></li>
+	    {{/if}}
+        </ul>
+    </nav>
+
+    <a href="#" class="mobile-navigation icon3-list2"></a>
+
+</header>
+
+{{> signup }}
+{{> signin }}

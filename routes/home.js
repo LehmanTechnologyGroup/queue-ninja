@@ -3,7 +3,7 @@ var router      = express.Router();
 
 
 /* GET home page. */
-router.all("/", ensureAuthenticated, pageTitleConcat);
+router.all("../", ensureAuthenticated, pageTitleConcat);
 router.get('/', function(req, res, next) {
  res.render('home');
 });

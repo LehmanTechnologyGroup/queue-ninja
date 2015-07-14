@@ -47,4 +47,19 @@ router.get('/google/callback',
     res.redirect('/home');
 });
 
+
+router.post('/signup', 
+  passport.authenticate('local-signup', {
+  successRedirect : '/home', 
+  failureRedirect : '/#signup',
+  failureFlash : true
+}));
+
+router.post('/signin', 
+  passport.authenticate('local-login', {
+  successRedirect : '/home', 
+  failureRedirect : '/#login',
+  failureFlash : true
+}));
+
 module.exports = router;

@@ -146,9 +146,12 @@ router.post('/lists/:userId/:listId/items/:itemId', function(req, res) {
       }
       res.json(response);
     } else {
-      
+      //here?
+      var newListItem = new ListItem();
     }
 
+
+  //or here??
   var newItem = new UserList();
     newList.userId = req.user.id;
     newList.name = req.body.name;

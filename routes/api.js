@@ -136,6 +136,57 @@ router.delete('/lists/:userId/:listId/items/:itemId', function(req, res) {
 
 });
 
+router.post('/lists/:userId/:listId/items/:itemId', function(req, res) {
+  UserList.find({ _id: req.params.listId, userId: req.params.userId}, function(err, list) {
+    if(err) {
+      console.log(err);
+      var response = {
+          "response-status": "ERROR",
+          "message": DB_ERROR_MESSAGE
+      }
+      res.json(response);
+    } else {
+      
+    }
+
+  var newItem = new UserList();
+    newList.userId = req.user.id;
+    newList.name = req.body.name;
+    newList.category = req.body.category;
+    newList.hidden = false;
+    newList.visibleToPublic = req.body.visibleToPublic;
+
+    if(newList == undefined) {
+      console.log("newList is undefined");
+      var response = {
+          "response-status": "ERROR",
+          "message": "No data was provided"
+      }
+      res.json(response);
+    }
+      
+    newList.save(function(err, list) {
+      if(err) {
+        console.log("DB Error: " + err);
+        var response = {
+            "response-status": "ERROR",
+            "message": DB_ERROR_MESSAGE
+        }
+        res.json(response);
+      
+      } else {
+        console.log("Saved successfully.");
+
+        var response = {
+            "response-status": "SUCCESS",
+            "message": "New list created.",
+            "list": list
+        }
+        res.json(response);
+      }
+  });
+});
+
 router.put('/lists/:userId/:listId/items/:itemId', function(req, res) {
 
 });
